@@ -1,0 +1,33 @@
+version: "2.3"
+
+services:
+  quarkus-service:
+    build:
+      context: .
+      dockerfile: src/main/docker/Dockerfile.native
+    image: lreimer/hands-on-quarkus:native
+    mem_limit: 128m
+    environment:
+      - QUARKUS_DATASOURCE_URL=jdbc:postgresql://quarkus-db:5432/library
+    ports:
+      - "8080:8080"  # the HTTP endpoint
+    depends_on:
+      - quarkus-db
+    networks:
+      - quarkus
+
+  quarkus-db:
+    image: "postgres:10.5"
+    mem_limit: 128m
+    environment:
+      - POSTGRES_USER=quarkus
+      - POSTGRES_PASSWORD=quarkus
+      - POSTGRES_DB=library
+    ports:
+      - "5432:5432"
+    networks:
+      - quarkus
+
+networks:
+  quarkus:
+    driver: bridge
