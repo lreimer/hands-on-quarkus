@@ -67,3 +67,5 @@ Then use the following command to build the native image and run it:
 docker build -f src/main/docker/Dockerfile.native -t hands-on-quarkus:native .
 docker run -i --rm -p 8080:8080 hands-on-quarkus:native
 ```
+
+docker run --ulimit memlock=-1:-1 -it --rm=true --memory-swappiness=0 --name postgres-quarkus-hibernate -e POSTGRES_USER=quarkus -e POSTGRES_PASSWORD=quarkus -e POSTGRES_DB=library -p 5432:5432 postgres:10.5

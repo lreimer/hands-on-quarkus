@@ -1,0 +1,336 @@
+{
+  "info": {
+    "_postman_id": "4278101a-8177-43ff-bb5c-e7a1549351b3",
+    "name": "Quarkus Service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET all books",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4ed6e5cf-2519-431d-a8bb-615f7368c9a0",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8080/books",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "books"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST and create new book",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"isbn\": \"1234567890\",\n    \"title\": \"Building Web Services with Java EE 8\",\n    \"author\": {\n        \"name\": \"Mario-Leander Reimer\"\n    }\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/books",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "books"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET new book",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8080/books/1234567890",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "books",
+            "1234567890"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update new book",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"isbn\": \"1234567890\",\n    \"title\": \"Building Web Services with Java EE 8 by Packt Publishing\",\n    \"author\": {\n        \"name\": \"M.-Leander Reimer\"\n    }\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/books/1234567890",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "books",
+            "1234567890"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE new book",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8080/books/1234567890",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "books",
+            "1234567890"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET unknown book",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8080/books/0123456789",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "books",
+            "0123456789"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET loans for ISBN 0345391802",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8080/books/0345391802/loans",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "books",
+            "0345391802",
+            "loans"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE loan 31d8dbdc-82c0-4c19-ab9b-b830b87472c4",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8080/books/0345391802/loans/31d8dbdc-82c0-4c19-ab9b-b830b87472c4",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "books",
+            "0345391802",
+            "loans",
+            "31d8dbdc-82c0-4c19-ab9b-b830b87472c4"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET loans for ISBN 1234567890",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8080/books/1234567890/loans",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "books",
+            "1234567890",
+            "loans"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST new loan for ISBN 1234567890",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"3032b54d-e931-4dcf-b24a-6d550a2273a1\",\n  \"username\": \"lreimer\",\n  \"start\": \"2019-01-23\",\n  \"end\": \"2019-05-23\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/books/1234567890/loans",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "books",
+            "1234567890",
+            "loans"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE loan for ISBN 1234567890",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8080/books/1234567890/loans/3032b54d-e931-4dcf-b24a-6d550a2273a1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "books",
+            "1234567890",
+            "loans",
+            "3032b54d-e931-4dcf-b24a-6d550a2273a1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Wrong update book",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"isbn\": \"1234567890\",\n    \"title\": \"Building Web Services with Java EE 8 by Packt Publishing\",\n    \"author\": {\n        \"name\": \"M.-Leander Reimer\"\n    }\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/books/0987654321",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "books",
+            "0987654321"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
