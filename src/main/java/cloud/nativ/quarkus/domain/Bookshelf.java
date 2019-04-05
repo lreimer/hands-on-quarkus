@@ -17,7 +17,7 @@ import java.util.Objects;
 public class Bookshelf {
 
     @Inject
-    private EntityManager entityManager;
+    EntityManager entityManager;
 
     /**
      * Returns the list of all books in the shelf.

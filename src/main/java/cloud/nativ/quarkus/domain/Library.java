@@ -12,7 +12,7 @@ import javax.transaction.Transactional;
 @Transactional(Transactional.TxType.REQUIRED)
 public class Library {
     @Inject
-    private EntityManager entityManager;
+    EntityManager entityManager;
 
     /**
      * Return a book with given ISBN on given load.
