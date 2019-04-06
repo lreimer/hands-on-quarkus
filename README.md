@@ -54,7 +54,7 @@ java -jar target/hands-on-quarkus-1.0-SNAPSHOT-runner.jar
 Currently, you need a running Postgres database for the tests run. Use the following
 Docker command to spin up the DB.
 ```
-docker run --ulimit memlock=-1:-1 -it --rm=true --memory-swappiness=0 --name postgres-quarkus-hibernate -e POSTGRES_USER=quarkus -e POSTGRES_PASSWORD=quarkus -e POSTGRES_DB=library -p 5432:5432 postgres:10.5
+docker run --ulimit memlock=-1:-1 -it --rm=true --memory-swappiness=0 --name postgres-quarkus-hibernate -e POSTGRES_USER=quarkus -e POSTGRES_PASSWORD=quarkus -p 5432:5432 postgres:10.5
 ```
 
 If you want to build a binary executable then you need Graal VM and call `mvn package -Pnative`. This takes quite some time so grab a :coffee:

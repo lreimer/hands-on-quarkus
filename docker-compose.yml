@@ -8,11 +8,12 @@ services:
     image: lreimer/hands-on-quarkus:native
     mem_limit: 128m
     environment:
-      - QUARKUS_DATASOURCE_URL=jdbc:postgresql://quarkus-db:5432/library
+      - QUARKUS_DATASOURCE_URL=jdbc:postgresql://quarkus-db:5432/quarkus
     ports:
       - "8080:8080"  # the HTTP endpoint
     depends_on:
-      - quarkus-db
+      quarkus-db:
+        condition: service_healthy
     networks:
       - quarkus
 
@@ -22,7 +23,11 @@ services:
     environment:
       - POSTGRES_USER=quarkus
       - POSTGRES_PASSWORD=quarkus
-      - POSTGRES_DB=library
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U quarkus"]
+      interval: 5s
+      timeout: 5s
+      retries: 6
     ports:
       - "5432:5432"
     networks:
