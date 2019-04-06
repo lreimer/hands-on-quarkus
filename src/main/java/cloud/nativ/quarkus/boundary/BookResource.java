@@ -3,6 +3,7 @@ package cloud.nativ.quarkus.boundary;
 import cloud.nativ.quarkus.domain.Book;
 import cloud.nativ.quarkus.domain.Bookshelf;
 import org.eclipse.microprofile.metrics.MetricUnits;
+import org.eclipse.microprofile.metrics.annotation.Counted;
 import org.eclipse.microprofile.metrics.annotation.Timed;
 
 import javax.enterprise.context.RequestScoped;
@@ -21,7 +22,6 @@ import java.util.Objects;
 @Path("/books")
 @Produces(MediaType.APPLICATION_JSON)
 @RequestScoped
-@Timed(unit = MetricUnits.MILLISECONDS)
 public class BookResource {
 
     @Inject
@@ -30,12 +30,14 @@ public class BookResource {
     ResourceContext context;
 
     @GET
+    @Timed(absolute = true, unit = MetricUnits.MILLISECONDS)
     public Response books() {
         return Response.ok(bookshelf.findAll()).build();
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @Counted(absolute = true)
     public Response create(@Valid Book book) {
         bookshelf.create(book);
         URI location = UriBuilder.fromResource(BookResource.class)
@@ -47,6 +49,7 @@ public class BookResource {
 
     @GET
     @Path("/{isbn}")
+    @Timed(absolute = true, unit = MetricUnits.MILLISECONDS)
     public Response get(@PathParam("isbn") String isbn) {
         Book book = bookshelf.findByISBN(isbn);
         return Response.ok(book).build();
@@ -55,6 +58,7 @@ public class BookResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/{isbn}")
+    @Counted(absolute = true)
     public Response update(@PathParam("isbn") String isbn, @Valid Book book) {
         if (!Objects.equals(isbn, book.getIsbn())) {
             // return Response.status(Response.Status.BAD_REQUEST).build();
@@ -67,6 +71,7 @@ public class BookResource {
 
     @DELETE
     @Path("/{isbn}")
+    @Counted(absolute = true)
     public Response delete(@PathParam("isbn") String isbn) {
         bookshelf.delete(isbn);
         return Response.ok().build();
