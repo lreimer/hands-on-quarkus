@@ -26,11 +26,11 @@ public class LoanResource {
     @Inject
     Library library;
 
+    private String isbn;
+
     public LoanResource() {
         // this is required! otherwise you get an error
     }
-
-    private String isbn;
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
