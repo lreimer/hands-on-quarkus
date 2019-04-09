@@ -4,7 +4,8 @@ slidenumbers: true
 
 [.hide-footer]
 [.slidenumbers: false]
-# __Hands on__ Quarkus.io
+# __Hands on__
+# [fit] _Quarkus_
 
 ---
 
