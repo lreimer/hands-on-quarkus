@@ -1,4 +1,5 @@
 target/
+ObjectStore/
 
 pom.xml.tag
 pom.xml.releaseBackup
@@ -11,6 +12,9 @@ buildNumber.properties
 .mvn/timing.properties
 
 .vscode/
+.settings/
+.project
+.dccache
 .idea/
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
